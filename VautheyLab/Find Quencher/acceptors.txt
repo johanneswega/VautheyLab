@@ -1,0 +1,137 @@
+1 Acridine 1.62 [7503]
+2 Benzo[c]cinnoline 1.55 [7503]
+3 Benzo[f]quinoline 2.14 [7503]
+4 Benzo[h]quinoline 2.21 [7503]
+5 Benzo[f]quinoxaline 1.74 [7503]
+6 2,2'-Bipyridine 2.18 [8901]
+7 2,2'-Bipyridine, 4,4'-dimethyl- 2.24 [8901]
+8 2,2'-Bipyridinium, N,N'-dimethyl- 0.73 [7901]
+9 3,3'-Bipyridinium, N,N'-dimethyl- 0.84 [7901]
+10 4,4'-Bipyridinium, N,N'-bis(n-butyl)- 0.44 [9002]
+11 4,4'-Bipyridinium, N,N'-bis(cyanomethyl)- 0.18 [9002]
+12 4,4'-Bipyridinium, N,N'-bis(n-octyl)- 0.44 [9002]
+13 4,4'-Bipyridinium, N,N'-dibenzyl- 0.35 [9503]
+14 4,4'-Bipyridinium, N,N'-dimethyl- 0.45 [9002]
+15 4,4'-Bipyridinium, N,N'-diphenyl- 0.24 [9002]
+16 2,2'-Bipyridimine 1.80 [8901]
+17 2,3-Bis(2-pyridyl)pyrazine 1.93a [0201]
+18 2,5-Bis(2-pyridyl)pyrazine 1.53a [0201]
+19 Cinnoline 1.69 [7503]
+20 Cyclobis(paraquat-p-phenylene) 0.29 [9503]
+21 2,7-Diazapyrenium, N,N'-diphenyl- 0.41 [0102]
+22 2,7-Diazapyrenium, N,N'-dimethyl- 0.46 [0102]
+23 Isoquinoline 2.22 [7503]
+24 Phenanthridine 2.12 [7503]
+25 1,10-Phenanthroline 2.04 [8901]
+26 1,7-Phenanthroline 2.09 [7503]
+27 4,7-Phenanthroline 2.04 [7503]
+28 Phenazine 1.23 [7503]
+29 Phthalazine 1.98 [7503]
+30 Pyrazine 2.08 [7503]
+31 Pyridazine 2.12 [7503]
+32 Pyridine 2.62 [7503]
+33 Pyrimidine 2.08 [7503]
+34 Quinazoline 1.80 [7503]
+35 Quinoline 2.11 [7503]
+36 Quinoxaline 1.70 [7503]
+37 2,2':6',2"-Terpyridine 1.99 [0302]
+1 Acetophenone 2.14b MeCN 1.66
+2 Acetophenone, 4'-chloro- 2.10b MeCN 
+3 Acetophenone, 4'-cyano- 1.58b MeCN 
+4 Acetophenone, 4'-methoxy- 2.23b MeCN 
+5 Acetophenone, 4'-methyl- 2.19b MeCN 
+6 9,10-Anthraquinone 0.86c DMF 
+7 Anthrone 1.51c DMF 
+8 Benzaldehyde 1.93c DMF 
+9 Benzil 1.16d,e MeCN 0.71
+10 Benzoic acid 2.24c DMF 
+11 Benzoic acid, methyl ester 2.32c DMF 
+12 Benzophenone 1.83b MeCN 1.55
+13 Benzophenone, 4-chloro- 1.75b MeCN 
+14 Benzophenone, 4-cyano- 1.42b MeCN 
+15 Benzophenone, 4,4'-dimethoxy- 2.02b MeCN 
+16 Benzophenone, 4,4'-dimethyl- 1.90b MeCN 
+17 1,4-Benzoquinone 0.45c DMF 
+18 1,4-Benzoquinone, tetrachloro- +0.02f MeCN 
+19 1,4-Benzoquinone, tetrafluoro- 0.04f MeCN 
+20 1,4-Benzoquinone, tetramethyl- 0.69f MeCN 
+21 1,4-Benzoquinone, trichloro- 0.08f MeCN 
+22 Biacetyl 1.32d,e MeCN 1.03
+23 2-Cyclopentenone 2.16c DMF 
+24 9-Fluorenone 1.29c DMF 1.21
+25 Maleic anhydride 0.85c DMF 
+26 2-Naphthaldehyde  1.34
+27 Naphthalene, 2-acetyl-  1.72
+28 1,4-Naphthoquinone 0.63c DMF 
+29 9,10-Phenanthrenequinone 0.67c,g DMF 
+30 Phthalic anhydride 1.27c DMF 
+31 Xanthone 1.77c,g DMF 
+1 Anthracene, 9-cyano-  1.58b
+2 Anthracene, 9,10-dicyano-  0.98b
+3 Benzene, 1-cyano-3,5-dinitro- 0.96 
+4 Benzene, 1-cyano-4-nitro- 1.25 
+5 Benzene, 1,2-dicyano- 2.12 
+6 Benzene, 1,3-dicyano- 2.17 
+7 Benzene, 1,4-dicyano- 1.97 
+8 Benzene, 1,2,4,5-tetracyano- 0.71a
+9 Benzonitrile 2.74 
+10 Benzonitrile, 4-chloro- 2.4 
+11 Benzonitrile, 4-methoxy- 3 
+12 Benzonitrile, 4-methyl- 2.75 
+13 Benzoylacetonitrile 2 
+14 4-Cyanobenzoic acid 1.91 
+15 Ethene, tetracyano-  +0.24a
+16 Naphthalene, 1-cyano-  2.33c,d
+17 Naphthalene, 1,4-dicyano-  1.67c,d
+18 Pyridine, 4-cyano- 2.03 
+19 7,7,8,8-Tetracyanoquinodimethane +0.19a
+1 (E)-Azobenzene 1.36 DMF [6801]
+2 (E)-4,4'-Azobiphenyl 1.22 DMF [6801]
+3 (E)-1,1'-Azonaphthalene 1.13 DMF [6801]
+4 (E)-2,2'-Azonaphthalene 1.22 DMF [6801]
+5 (E)-4,4'-Azopyridine 0.80 DMF [6801]
+6 Benzaldehyde, 4-nitro- 0.86 MeCN [6101]
+7 Benzene, 1-chloro-4-nitro- 1.06 MeCN [6101]
+8 Benzene, 1-fluoro-4-nitro- 1.13 MeCN [6101]
+9 Benzene, 1,4-dinitro- 0.69 MeCN [6101]
+10 Benzene, 1-methyl-2-nitro- 1.28 DMF [7701]
+11 Benzene, 1-methyl-4-nitro 1.14 DMF [7701]
+12 Benzene, nitro 1.08 DMF [7701]
+13 Benzene, 1,1'-sulfonylbis- 2.05 DMF [7701]
+14 BDPYa 1.15b CH2Cl2 [0306]
+15 1,3-Butadiene, 1,4-diphenyl- 1.98 Dioxane 75% [7503]
+16 β-Carotene 1.63 THF [7803]
+17 Cyclopentadiene 2.91 DMF [7701]
+18 Diazene, diphenyl- 1.36 DMF [7701]
+19 Eosin Y dianionc 1.38 MeCN [0402]
+20 Fulleropyrrolidine, N-TEG-d 0.44 THF [0304]
+21 Fulleropyrrolidinium, N-methyl-N-TEG-d 0.29e THF [0304]
+22 1,3,5-Hexatriene, 1,6-diphenyl- 1.76 Dioxane 96% [7503]
+23 Isoprene 2.70 DMF [7701]
+24 Mellitic triimide, N,N',N"-tris-(n-butyl)]-f 0.52 CH2Cl2 [0305]
+25 Methanofullerene, bis(trimethylsilylethynyl)- 0.52 CH2Cl2 [9802]
+26 Methyl 4-nitrobenzoate 0.95 MeCN [6101]
+27 1,4,5,8-Napthalene diimide, N,N'-bis(n-pentyl)- 0.70 CH2Cl2 [0004]
+28 1,8-Naphthalimide 1.30 MeCN [7001]
+29 1,3,5,7-Octatetraene, 1,8-diphenyl- 1.62 Dioxane 96% [7503]
+30 Oligo(p-phenylenevinylene)-1g 2.29b THF [9104]
+31 Oligo(p-phenylenevinylene)-2h 2.17b THF [9104]
+32 Oligo(p-phenylenevinylene)-3i 2.06b THF [9104]
+33 Oligo(p-phenylenevinylene)-4j 2.01b THF [9104]
+34 Phthalimide 1.47 DMF [7001]
+35 Phthalocyanine 0.7 DMF [9302]
+36 Phthalocyanine, tetrabutyl- 0.7 DMF [9302]
+37 Phthalocyanine, tetraneopenthoxy- 0.9 DMF [9302]
+38 Phthalocyanine, tetrasulfonato- 0.53 DMF [9302]
+39 Piperylene 2.76 DMF [7701]
+40 Porphyrin, octaethyl- 1.46 CH2Cl2 [0005]
+41 Porphyrin, tetrabenzo- 1.13 DMSO [0005]
+42 Porphyrin, tetramesityl- 1.41 CH2Cl2 [0005]
+43 Porphyrin, tetraphenyl- 1.23 CH2Cl2 [0005]
+44 Pyridine-N-oxide 2.30 DMF [7701]
+45 Pyromellitic diimide 0.82 DMF [7001]
+46 Pyromellitic diimide, N,N'-bis(n-pentyl)- 0.95 CH2Cl2 [0004]
+47 Retinal 1.42 THF [7803]
+48 Thiofluorenone 1.07 MeCN [8502]
+49 Thioxanthione 1.05 MeCN [8502]
+50 Triphenylphosphinek 1.53 DMF [7001]
