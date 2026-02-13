@@ -3,10 +3,6 @@ VautheyLab.egg-info/
 build/
 dist/
 
-# local analysis folders (not part of package)
-FTIR/
-Steady_State/
-
 # python junk
 VautheyLab/__pycache__/
 *.pyc
