@@ -6,11 +6,13 @@
 
 ## ⚙️ Overview
 
-This package provides modular, object-oriented tools for handling and analyzing experimental data. Objects are created for each type of experiment or analysis technique, while the mathematical processing and analysis happens in the background.  
+This package provides modular, object-oriented tools for handling and analyzing experimental data. Objects are created for each type of experiment or analysis technique, while the mathematical processing and analysis happens in the background. 
 
-Templates for common data analysis workflows are available in `VautheyLab/templates`, and some example scripts can be found in the `examples` folder.  
+The pacakge is mainly dedicated for personal use by myself and as of now documentation is sparse. However, as some colleagues were interested in some of the capabilites of this package, e.g. how to easily render movies out of time-resolved spectra (see below), I decided to share it here on GitHub.
 
-> Note: Documentation is currently sparse. For more detailed guidance on the capabilities of the package, best to talk to me directly. I can show you how to use it and explain what happens under the hood.
+Templates for common data analysis workflows are available in `VautheyLab/templates`, and some explanatory example scripts can be found in the `VautheyLab/examples`.  
+
+> Note: As documentation is currently sparse, for more detailed guidance on the capabilities of the package, best to talk to me directly. I can show you how to use it and explain what happens under the hood.
 
 ---
 
@@ -31,7 +33,9 @@ cd VautheyLab
 pip install -e .
 ```
 
-The -e flag (--editable) allows you to modify the scripts locally while using the package. As I use LaTeX for nice mathematical axes labels it is also necessary to have LaTeX installed on your machine.
+The -e flag (--editable) allows you to modify the scripts locally while using the package. 
+
+3. As I use LaTeX for nice mathematical axis labels it is also necessary to have LaTeX installed on your machine.
 
 ---
 
@@ -52,13 +56,16 @@ a = Absorption(
 )
 a.show()
 ```
+
+![Absorption example](.pics/abs.png)
+
 In almost all class objects, arguments like `files`, `cuts`, `colors`, and `labels` are given as **lists**. This makes it easy to plot and compare multiple spectra in the same figure.
 
 You can also directly access the loaded data and analyze it with your own custom code. For example, the wavelength, wavenumber, and absorbance of the *i-th* file are stored as NumPy arrays:
 ```python
-wavelength = a.wl[0]
-wavenumber = a.wn[0]
-absorbance = a.A[0]
+wavelength = a.wl[i]
+wavenumber = a.wn[i]
+absorbance = a.A[i]
 ```
 
 However, most of the classes are not just for plotting. Most of them come with built-in analysis methods. Say you want to estimate the oscillator strength and radiative rate constant for the $S_1 \leftarrow S_0$ transition by integrating the absorption spectrum between 440–600 nm using the Strickler-Berg analysis. For this, xou just need to pass two extra arguments when creating the Absorption object:
@@ -92,12 +99,14 @@ a.calc_oscillator_strength([440, 600], 1.421, 18.8, 0)
 a.show()
 ```
 
+![Absorption example](.pics/Stickler.png)
+
 This will automatically calculate and output the following useful properties: 
 
-- The oscillator strenth calculated over the region is: $f = 0.13$
-- The TDM is: $\mu_{\text{TDM}} = 3.75\,\text{D}$
-- Radiative rate constant $k_{\text{rad}} = 5.81 \times 10^8 \,\text{s}^{-1}$
-- Radiative lifetime $\tau_\text{rad} = 17.2\,\text{ns}$
+- Oscillator strenth calculated over the region: $f = 0.13$
+- Transition Dipole Moment: $\mu_{\text{TDM}} = 3.75 \text{D}$
+- Radiative rate constant $k_{\text{rad}} = 5.81 \times 10^8 \text{s}^{-1}$
+- Radiative lifetime $\tau_\text{rad} = 17.2 \text{ns}$
 
 Of course this is not the only method of the `absorption` class and a plethora of other methods are implemented like:
 - `get_concentration` (get concentration of sample providing exctinction coefficeint)

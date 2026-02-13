@@ -7,7 +7,7 @@ l = 1
 
 # initialize absorption class
 a = Absorption(files=['abs_file.csv'],
-             cuts=[(350, 800)],
+             cuts=[(350, 800)], savefig=True,
              colors=['r'],
              conc=[24e-6], 
              pathlegnths=[1],
