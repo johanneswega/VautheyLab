@@ -165,7 +165,10 @@ m = Movie(files=['dA1.npy'],
 m.render()
 ```
 
-![](.pics/movie.gif)
+<p align="center">
+  <img src=".pics/movie.gif" width="500">
+</p>
+
 
 Most arguments are optional but give fine control over the appearance of the movie. Typical rendering times are often below one minute. The `steady_state` argument is particularly useful as it lets you overlay ground-state absorption/emission spectra, literature spectra (e.g. radical ions), or other references directly into the movie.
 
@@ -190,7 +193,10 @@ m = Movie(files=['dA1.npy', 'dA2.npy'],
 m.render()
 ```
 
-![](.pics/comp.gif)
+<p align="center">
+  <img src=".pics/comp.gif" width="500">
+</p>
+
 
 For TRIR data, you can directly use `.pdat` files or again convert custom txt files to `.npy`:
 
@@ -212,7 +218,7 @@ m.render()
 ```
 
 <p align="center">
-  <img src=".pics/TCNQ.gif" width="400">
+  <img src=".pics/TCNQ.gif" width="350">
 </p>
 
 ---
@@ -259,3 +265,4 @@ The `transient_absorption` module also includes several helper functions to:
 
 ---
 
+ToDo: Add pictures, describe Echem module, TCSPC and MD + VautheyLab.fit_functions, VautheyLab.miscellanous, VautheyLab.standard_figures

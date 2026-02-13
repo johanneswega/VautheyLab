@@ -75,14 +75,6 @@ def interpolate_TRIR(file1, file2):
         dAint[:, i] = int_trace
     save_pdat('%s_int.pdat'%(file2[:file2.find('.')]), tIR, wn, dAint)
 
-def npy_to_pdat(file):
-    t, wl, dA = load(file)
-    pdat = np.zeros((len(t)+1, len(wl)+1))
-    pdat[1:,0] = t
-    pdat[0, 1:] = wl
-    pdat[1:, 1:] = dA
-    np.savetxt('%s.pdat'%(file[:file.find('.')]), pdat, header='ps*nm', delimiter=',')
-
 def save_pdat(name, t, wl, dA):
     pdat = np.zeros((len(t)+1, len(wl)+1))
     pdat[1:,0] = t
@@ -106,15 +98,25 @@ def average_pdats(files):
     dAmean = np.mean(dAs, axis=0)
     save_pdat('mean.pdat', t, wl, dAmean)
 
+def npy_to_pdat(file):
+    t, wl, dA = load(file)
+    pdat = np.zeros((len(t)+1, len(wl)+1))
+    pdat[1:,0] = t
+    pdat[0, 1:] = wl
+    pdat[1:, 1:] = dA
+    np.savetxt('%s.pdat'%(file[:file.find('.')]), pdat, header='ps*nm', delimiter=',')
+
 def pdat_to_npy(file):
-    data = np.loadtxt(file, skiprows=1, delimiter=',')
-    t = data[1:, 0]
-    wl = data[0, 1:]
-    dA = data[1:, 1:]    
+    t, wl, dA = load_pdat(file)  
     np.save('%s.npy'%(file[:file.find('.')]), np.array([t, wl, dA], dtype=object))
 
-def convert_to_txt(fname, experiment='femto', t_cuts=None, wl_cuts=None):
+def txt_to_npy(t_file, wl_file, dA_file):
+    t = np.loadtxt(t_file, skiprows=1)
+    wl = np.loadtxt(wl_file, skiprows=1)
+    dA = np.loadtxt(dA_file, skiprows=1)
+    save('dA_from_txt.npy', t, wl, dA)
 
+def convert_to_txt(fname, experiment='femto', t_cuts=None, wl_cuts=None):
     if '.npy' in fname:
         t, l, dA = load(fname, t_cuts=t_cuts, wl_cuts=wl_cuts)
         # Save array a to a text file
