@@ -247,16 +247,56 @@ Classes for time-resolved transient absorption experiments.
 Works for UV–vis/NIR TA, TRIR, and nsTA data:
 
 - `Movie` — generates animated TA spectra (great for visualizing dynamics and comparing spectral evolution, described in detail above)
+
 - `Overview` — spectral slice overview plots at selected time delays
+
+<p align="center">
+  <img src=".pics/overview.png" width="350">
+</p>
+
 - `Kinetics` — kinetic traces at selected wavelengths
+
+<p align="center">
+  <img src=".pics/kinetics.png" width="350">
+</p>
+
 - `Contour` — contour maps of TA datasets
-- `Compare_Spectra` — compare multiple TA spectra at a given delay across in different subplots
-- `Compare_Kinetics` — compare multiple kinetic traces in different subplots
+
+<p align="center">
+  <img src=".pics/contour.png" width="350">
+</p>
+
+- `Compare_Spectra` — compare multiple TA spectra at a given delay
+
+<p align="center">
+  <img src=".pics/compare_spectra.png" width="350">
+</p>
+
 - `Compare_Overviews` — compare spectral slices from different experiments in different subplots
+
+<p align="center">
+  <img src=".pics/compare_overviews.png" width="500">
+</p>
+
+- `Compare_Kinetics` — compare kinetic traces of different TA spectra 
+
+<p align="center">
+  <img src=".pics/compare_kinetics.png" width="350">
+</p>
+
+- `Compare_Contours` — compare multiple TA contours in different subplots
+
+<p align="center">
+  <img src=".pics/compare_contours.png" width="500">
+</p>
+
 - `twoDIR` — visualization of 2D-IR spectra
 
-To use these classes, the data first needs to be converted into a `.npy` file containing the time, wavelength, and ΔA arrays.  
-Examples on how to generate these `.npy` files from raw `.txt` TA data can be found in the `examples` folder.
+<p align="center">
+  <img src=".pics/2DIR.png" width="350">
+</p>
+
+To use these classes, the data first needs to be converted into a `.npy` file containing the time, wavelength, and ΔA arrays. Examples on how to generate these `.npy` files from raw `.txt` TA data can be found in the `examples` folder.
 
 The `transient_absorption` module also includes several helper functions to:
 
