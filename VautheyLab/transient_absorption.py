@@ -4,6 +4,7 @@ from VautheyLab.compare_kinetics import Compare_Kinetics
 from VautheyLab.compare_contours import Compare_Contours
 from VautheyLab.compare_spectra import Compare_Spectra
 from VautheyLab.compare_overviews import Compare_Overviews
+from VautheyLab.global_analysis import Global_Analysis
 from VautheyLab.plot_2DIR import twoDIR
 from VautheyLab.plot_contour import Contour
 from VautheyLab.movie_TA import Movie

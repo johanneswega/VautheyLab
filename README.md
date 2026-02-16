@@ -287,7 +287,21 @@ Works for UV–vis/NIR TA, TRIR, and nsTA data:
 - `Compare_Contours` — compare multiple TA contours in different subplots
 
 <p align="center">
-  <img src=".pics/compare_contours.png" width="500">
+  <img src=".pics/compare_contours.png" width="450">
+</p>
+
+- `Global_Analysis` - class to perform global kinetic analysis on TA data set (supports parallel, sequential and target models)
+
+<p align="center">
+  <img src=".pics/fit.png" width="800">
+</p>
+
+<p align="center">
+  <img src=".pics/global.png" width="500">
+</p>
+
+<p align="center">
+  <img src=".pics/global_kinetics.png" width="350">
 </p>
 
 - `twoDIR` — visualization of 2D-IR spectra

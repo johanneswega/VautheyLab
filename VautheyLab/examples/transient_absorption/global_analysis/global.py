@@ -11,19 +11,19 @@ fname = 'dA.npy'
 experiment = 'femto'
 
 # define scale
-scale = np.array([-5, 5])
+scale = np.array([-25, 25])
 
 # specify number of contours
 nlevels = 50
 
 # specify cuts 
 # time in pss
-delay = [0.3, 250]
+delay = [5, 1800]
 # wavelength in nm / or cm-1 for TRIR
-wl = [1000, 3000]
+wl = [350, 750]
 # specify scatter region to exclude
-scatter = None
-#scatter = [380, 420]
+#scatter = None
+scatter = [520, 560]
 
 # specify model
 model = 'sequential'
@@ -35,7 +35,7 @@ IRF = False
 IR = False
 
 # initial guess
-p0 = [1, 10]
+p0 = [10, 100]
 
 # choose wl to plot kinetics
 wlkin = np.arange(350, 750, 20)
