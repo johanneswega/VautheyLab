@@ -77,7 +77,10 @@ class Global_Analysis:
             self.dA = np.delete(self.dA, lindex, axis=1)
 
         # calculate wavenumber in kK
-        self.wn = (1/self.wl)*10**4
+        if self.IR==False:
+            self.wn = (1/self.wl)*10**4
+        else:
+            self.wn = self.wl
 
     # method to plot 2D map
     def plot_2D_map(self, ax, t, wn, dA, scale, white=False):
