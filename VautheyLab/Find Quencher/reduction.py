@@ -1,8 +1,8 @@
 import numpy as np
 
 # give excited state energy and oxidation potential of your chromophore vs. SCE
-E00 = 3.05
-Ered = -1.91
+E00 = 0.0
+Ered = 0.51
 
 # load donors
 Donors = []

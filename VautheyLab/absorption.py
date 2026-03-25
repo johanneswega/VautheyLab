@@ -166,10 +166,19 @@ class Absorption:
                 self.A.append(data[:,1]) 
             else:
                 if not '.txt' in self.files[i]:
-                    data = np.loadtxt('%s'%self.files[i], delimiter=',')
-                    self.wn.append(data[:,0])
-                    self.wl.append((1/data[:,0])*10**(4))
-                    self.A.append(data[:,1])
+                    if self.files[i].endswith('.0'):
+                        from brukeropus import read_opus
+                        opus_file = read_opus(self.files[i])
+                        x = np.array(opus_file.a.x)
+                        y = np.array(opus_file.a.y)
+                        self.wn.append(x)
+                        self.wl.append((1/x)*10**4)
+                        self.A.append(y)
+                    else:
+                        data = np.loadtxt('%s'%self.files[i], delimiter=',')
+                        self.wn.append(data[:,0])
+                        self.wl.append((1/data[:,0])*10**(4))
+                        self.A.append(data[:,1])
                 else:
                     data = np.loadtxt('%s'%self.files[i], delimiter=',')
                     self.wl.append(data[:,0])

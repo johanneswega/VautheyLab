@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, writers
-from VautheyLab.miscellaneous import moving_average
+from VautheyLab.miscellaneous import moving_average, find_index
 import os
 plt.style.use(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'style.mplstyle'))
 np.seterr(divide='ignore')
@@ -173,7 +173,8 @@ class Movie:
                 before = self.dA[j][self.t[j]<self.t[j][i],:]
                 for k in range(len(before)):
                     self.ax.plot(x, before[k], '-', color=self.colors[j], alpha=0.01)
-            y = self.dA[j][i, :]
+            print(self.t[0][i], self.t[j][find_index(self.t[j], self.t[0][i])])
+            y = self.dA[j][find_index(self.t[j], self.t[0][i]), :]
             if self.MA[j]==False:
                 if self.normall==False:
                     self.ax.plot(x, y, '-', color=self.colors[j], label=self.labels[j])
@@ -188,21 +189,21 @@ class Movie:
                     self.ax.plot(x, y, '-', color=self.colors[j], alpha=0.2)
                     self.ax.plot(moving_average(x, self.MA_npoints[j]), moving_average(y, self.MA_npoints[j]), '-', color=self.colors[j], label=self.labels[j])                    
             if self.experiment=='nano':
-                if self.t[j][i]<1:
-                    self.ax.set_title(r'$\Delta t = %.3g\,\text{ps}$'%(self.t[j][i]*1000))
-                if self.t[j][i]>=1000:
-                    self.ax.set_title(r'$\Delta t = %.3g\,\text{µs}$'%(self.t[j][i]/1000))
+                if self.t[0][i]<1:
+                    self.ax.set_title(r'$\Delta t = %.3g\,\text{ps}$'%(self.t[0][i]*1000))
+                if self.t[0][i]>=1000:
+                    self.ax.set_title(r'$\Delta t = %.3g\,\text{µs}$'%(self.t[0][i]/1000))
                 else:
-                    self.ax.set_title(r'$\Delta t = %.3g\,\text{ns}$'%self.t[j][i])
+                    self.ax.set_title(r'$\Delta t = %.3g\,\text{ns}$'%self.t[0][i])
             else:
-                if np.abs(self.t[j][i])<1:
-                    self.ax.set_title(r'$\Delta t = %.3g\,\text{fs}$'%(self.t[j][i]*1000))
-                elif 1<=np.abs(self.t[j][i])<1000:
-                    self.ax.set_title(r'$\Delta t = %.3g\,\text{ps}$'%(self.t[j][i]))
-                elif self.t[j][i]>=1000 and self.t[j][i]<1e6:
-                    self.ax.set_title(r'$\Delta t = %.3g\,\text{ns}$'%(self.t[j][i]/1000))
+                if np.abs(self.t[0][i])<1:
+                    self.ax.set_title(r'$\Delta t = %.3g\,\text{fs}$'%(self.t[0][i]*1000))
+                elif 1<=np.abs(self.t[0][i])<1000:
+                    self.ax.set_title(r'$\Delta t = %.3g\,\text{ps}$'%(self.t[0][i]))
+                elif self.t[0][i]>=1000 and self.t[0][i]<1e6:
+                    self.ax.set_title(r'$\Delta t = %.3g\,\text{ns}$'%(self.t[0][i]/1000))
                 else:
-                    self.ax.set_title(r'$\Delta t = %.3g\,\text{µs}$'%(self.t[j][i]/10**6))
+                    self.ax.set_title(r'$\Delta t = %.3g\,\text{µs}$'%(self.t[0][i]/10**6))
 
         # plot steady state spectra
         if self.steady_state!=None:
