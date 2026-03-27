@@ -489,10 +489,8 @@ class Absorption:
         return A_look
     
     def plot(self):
-        # for waterfall plot
-        shift = 0
         # go thourgh all spectra and plot them
-        for i in self.which:
+        for j, i in enumerate(self.which):
             if self.units=='wl':
                 x = self.wl[i]
             else:
@@ -508,15 +506,18 @@ class Absorption:
                 y = self.A[i]
 
             # shift if waterfall
-            if self.waterfall!=None:
-                y += shift*self.waterfall
-                shift+=1
+            if self.waterfall!=False:
+                y += j*self.waterfall
 
             # plot
             if self.MA==False:
                 self.ax.plot(x, y, color=self.colors[i], label=self.labels[i], linestyle=self.linestyle[i], alpha=self.alpha[i])
                 if self.fill == True:
-                    self.ax.fill_between(x, shift, y, color=self.colors[i], alpha=self.alpha[i]/4)  
+                    if self.waterfall==False:
+                        self.ax.fill_between(x, 0, y, color=self.colors[i], alpha=self.alpha[i]/10)  
+                    else:
+                        self.ax.fill_between(x, j*self.waterfall, y, color=self.colors[i], alpha=self.alpha[i]/10)  
+                        self.ax.axhline(y=j*self.waterfall, color='k', alpha=0.5)
             else:
                 self.ax.plot(x, y, '-', color=self.colors[i], alpha=0.2)
                 self.ax.plot(moving_average(x, self.MA_npoints), moving_average(y, self.MA_npoints), '-', color=self.colors[i], label=self.labels[i])

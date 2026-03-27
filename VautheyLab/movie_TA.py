@@ -173,7 +173,7 @@ class Movie:
                 before = self.dA[j][self.t[j]<self.t[j][i],:]
                 for k in range(len(before)):
                     self.ax.plot(x, before[k], '-', color=self.colors[j], alpha=0.01)
-            print(self.t[0][i], self.t[j][find_index(self.t[j], self.t[0][i])])
+            #print(self.t[0][i], self.t[j][find_index(self.t[j], self.t[0][i])])
             y = self.dA[j][find_index(self.t[j], self.t[0][i]), :]
             if self.MA[j]==False:
                 if self.normall==False:

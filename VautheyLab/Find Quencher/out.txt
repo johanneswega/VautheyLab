@@ -1,0 +1,91 @@
+
+C* + Q --> C- + Q+
+
+Chromophore parameters: E00 = 0 eV / Ered = 0.51 vs SCE
+
+Possible Quenchers/Donors for Anion Generation:
+
+dG = -0.38 eV      p-Phenylenediamine, N,N,N',N'-tetramethyl- 
+dG = -0.36 eV      Anthracene, 9-amino- 
+dG = -0.31 eV     Aniline, 3,4-dimethoxy-N,N-dimethyl- 
+dG = -0.24 eV     Aniline, 2,4-dimethoxy-N,N-dimethyl- 
+dG = -0.23 eV      o-Phenylenediamine, N,N,N',N'-tetramethyl- 
+dG = -0.23 eV      p-Phenylenediamine 
+dG = -0.19 eV      Tetrathiafulvalene 
+dG = -0.19 eV      m-Phenylenediamine, N,N,N',N'-tetramethyl- 
+dG = -0.18 eV      Aniline, 4-methoxy-N,N-dimethyl- 
+dG = -0.13 eV      Corrole, octaethyl- 
+dG = -0.13 eV      Tetrathiafulvalene, bis(pyrrolo)- 
+dG = -0.08 eV      Benzidine, N,N,N',N'-tetramethyl- 
+dG = -0.07 eV      Anthracene, 2-amino- 
+dG = -0.06 eV      o-Phenylenediamine 
+dG = -0.04 eV     Tetramethylethyldiamine 
+dG = -0.03 eV      Tetraselenafulvalene 
+dG = -0.03 eV     Aniline, 2-methoxy-N,N-dimethyl- 
+dG = -0.02 eV      Pyrene, 1,6-bis(dimethylamino)- 
+dG = -0.02 eV      Tetrathiafulvalene, bis(ethylenedithio)- 
+dG = -0.02 eV     Aniline, 3-methoxy-N,N-dimethyl- 
+dG = -0.01 eV     Aniline, 3,5-dimethoxy-N,N-dimethyl- 
+dG = 0.04 eV      Benzidine 
+dG = 0.04 eV      Porphyrin, tetrabenzo-c 
+dG = 0.05 eV      1,4-Diazabicyclo[2.2.2]octane (DABCO) 
+dG = 0.08 eV      Phenothiazine 
+dG = 0.08 eV      Phenoxazine 
+dG = 0.12 eV      Phenoxazine, N-methyl- 
+dG = 0.21 eV      Aniline, 4-methyl-N,N-dimethyl- 
+dG = 0.21 eV      Phenothiazine, N-methyl- 
+dG = 0.25 eV     Aniline, N,N-diethyl- 
+dG = 0.26 eV      Phenoselenazine, N-methyl- 
+dG = 0.27 eV      Aniline, 4-methyl- 
+dG = 0.3 eV      Benzene, 1,2,4,5-tetramethoxy- 
+dG = 0.3 eV     Aniline, N,N-dimethyl- 
+dG = 0.31 eV      1-Azabicyclo[2.2.2]octane (Quinuclidine) 
+dG = 0.31 eV      Pyrene, 1,6-dimethoxy- 
+dG = 0.32 eV      Porphyrin, octaethyl-b 
+dG = 0.34 eV      Pyrrolidine 
+dG = 0.35 eV      Aniline, N-phenyl- 
+dG = 0.35 eV      Triphenylamine 
+dG = 0.39 eV      Di-i-propylethylamine 
+dG = 0.39 eV      Triethanolamine 
+dG = 0.4 eV      Porphyrin, tetramesityl-b 
+dG = 0.41 eV      Tributylamine 
+dG = 0.41 eV     Aniline, N,N-diphenyl- 
+dG = 0.43 eV      Diphenylamine 
+dG = 0.45 eV      Pyrene, 1,6-bis(methylthio)- 
+dG = 0.45 eV      Triethylamine 
+dG = 0.47 eV     Aniline 
+dG = 0.47 eV     Anthracene, 9,10-dimethoxy- 
+dG = 0.49 eV      Porphyrin, tetraphenyl-b 
+dG = 0.54 eV     Anthracene, 9-methoxy- 
+dG = 0.56 eV      Benzene, pentamethoxy- 
+dG = 0.56 eV      Indole, 2-methyl- 
+dG = 0.58 eV      Benzene, 1,2,3,5-tetramethoxy- 
+dG = 0.58 eV      Indole, 1,2-dimethyl- 
+dG = 0.59 eV      Carbazole, N-methyl- 
+dG = 0.6 eV     Anthracene, 9,10-bis(methylthio)- 
+dG = 0.61 eV      Benzene, 1,2,4-trimethoxy- 
+dG = 0.61 eV      Dicyclohexylamine 
+dG = 0.61 eV      Piperidine 
+dG = 0.61 eV      Trimethylamine 
+dG = 0.63 eV      Carbazole, N-ethyl- 
+dG = 0.65 eV      Carbazole 
+dG = 0.66 eV      Dibutylamine 
+dG = 0.67 eV     Anthracene, 9,10-bis(2,6-dimethoxyphenyl)- 
+dG = 0.69 eV      Indole, 1-methyl- 
+dG = 0.69 eV     Anthracene, 9,10-diphenoxy- 
+dG = 0.7 eV      Indole 
+dG = 0.71 eV      Dipropylamine 
+dG = 0.72 eV      Guanine 
+dG = 0.73 eV      Benzene, hexamethoxy- 
+dG = 0.74 eV      Benzene, 1,2,3,4-tetramethoxy- 
+dG = 0.74 eV      Biphenyl, 4,4'-bis(methylthio)- 
+dG = 0.79 eV      Biphenyl, 4,4'-dimethoxy- 
+dG = 0.79 eV      Diethylamine 
+dG = 0.83 eV     Benzene, 1,4-dimethoxy- 
+dG = 0.87 eV      Dibenzylamine 
+dG = 0.88 eV      Biphenyl, 2,2'-bis(methylthio)- 
+dG = 0.91 eV      Benzene, 1,2,3-trimethoxy- 
+dG = 0.94 eV     Benzene, 1,2-dimethoxy- 
+dG = 0.96 eV      Biphenyl, 3,3'-bis(methylthio)- 
+dG = 0.99 eV     Benzene, 1,3-dimethoxy- 
+
