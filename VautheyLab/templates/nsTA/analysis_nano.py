@@ -289,7 +289,7 @@ scale = [-20, 20]
 # define excitation wavelength in nm
 ex_wl = 355
 # offset for kinetics
-offset = -4.06
+offset = 0.0
 
 # get data files
 files = [f for f in os.listdir() if f.endswith('.dat')]

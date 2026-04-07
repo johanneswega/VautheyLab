@@ -16,7 +16,7 @@ def load_pdat(file):
 class Global_Analysis:
     # initialize class
     def __init__(self, file, p0, t_cuts=None, wl_cuts=None, scatter=None, experiment='femto', scale=[-10, 10],
-                 model='sequential', IRF=False, wavelengths=np.arange(350, 750, 20), IR=False, nlevels=51, K=None, C0=None):
+                 model='sequential', IRF=False, wavelengths=np.arange(350, 750, 20), IR=False, nlevels=51, K=None, C0=None, RMS=False):
         # file to be loaded 
         self.file = file
         # initial values for the fit 
@@ -45,6 +45,8 @@ class Global_Analysis:
         self.K = K
         # initial conditions for target model
         self.C0 = C0
+        # whether to use experimental RMS on TA data for fit
+        self.RMS = RMS
 
         # read in data
         self.read_data()
@@ -54,16 +56,25 @@ class Global_Analysis:
         # load data 
         if '.npy' in self.file:
             self.t, self.wl, self.dA = np.load(self.file, allow_pickle=True)
+            # get rms matrix 
+            if self.RMS!=False:
+                self.t, self.wl, self.rms = np.load(self.RMS, allow_pickle=True)
         if '.pdat' in self.file:
             self.t, self.wl, self.dA = load_pdat(self.file)
 
         # cut the data 
         if self.t_cuts!=None:
             self.dA = self.dA[(self.t>self.t_cuts[0])&(self.t<self.t_cuts[1]), :]
+            # cut rms matrix
+            if self.RMS!=False:
+                self.rms = self.rms[(self.t>self.t_cuts[0])&(self.t<self.t_cuts[1]), :]
             self.t = self.t[(self.t>self.t_cuts[0])&(self.t<self.t_cuts[1])]
         if self.wl_cuts!=None:
             self.dA = self.dA[:, (self.wl>self.wl_cuts[0])&(self.wl<self.wl_cuts[1])]
-            self.wl = self.wl[(self.wl>self.wl_cuts[0])&(self.wl<self.wl_cuts[1])]
+            # cut rms matrix 
+            if self.RMS!=False:
+                self.rms = self.rms[:, (self.wl>self.wl_cuts[0])&(self.wl<self.wl_cuts[1])]    
+            self.wl = self.wl[(self.wl>self.wl_cuts[0])&(self.wl<self.wl_cuts[1])]     
         
         # exclude scatter
         if self.scatter!=None:
@@ -75,6 +86,8 @@ class Global_Analysis:
                     lindex.append(i)
             self.wl = np.delete(self.wl, lindex)
             self.dA = np.delete(self.dA, lindex, axis=1)
+            if self.RMS!=False:
+                self.rms = np.delete(self.rms, lindex, axis=1)
 
         # calculate wavenumber in kK
         if self.IR==False:
@@ -262,7 +275,10 @@ class Global_Analysis:
     def least_squares_fit(self, p):
         C = self.calculate_C(p)
         self.Sim = np.dot(C, np.dot(np.linalg.pinv(C), self.dA))
-        return (self.Sim - self.dA).flatten()
+        if self.RMS==False:
+            return (self.Sim - self.dA).flatten()
+        else:
+            return ((self.Sim - self.dA)/self.rms).flatten()
     
     # method to plot the results of the fit
     def plot_fit(self, dA, l, t, p):
@@ -285,10 +301,19 @@ class Global_Analysis:
 
         # residuals 
         self.plot_2D_map(ax[2], t, l, (Sim-dA), self.scale, True)
-        residuals = (Sim-dA)**2
+        residuals = (Sim - dA)
+        # export residuals 
         np.save('Res.npy', np.array([t, l, Sim-dA], dtype=object))
-        chi2 = np.sum((residuals.flatten()))/(len((Sim-dA).flatten()) - len(p))
-        ax[2].set_title(r"Residuals ($\chi^2 = %.3g$)"%(chi2))
+
+        # calculate chi2
+        if self.RMS == False:
+            chi2 = np.sum(residuals**2)
+        else:
+            chi2 = np.sum((residuals / self.rms)**2)
+        dof = residuals.size - len(p)
+        # calculate reduced chi2
+        chi2_red = chi2 / dof
+        ax[2].set_title(r"Residuals ($\chi_v^2 = %.3g$)"%(chi2_red))            
         ax[2].set_ylabel('')
 
         fig.tight_layout()
