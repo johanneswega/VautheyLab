@@ -18,7 +18,7 @@ class Movie:
     def __init__(self, files, units='wn', inv=True, t_cuts=None, wl_cuts=None, norm=False, normat=None, minnorm=False, scatter=None, normall=False,
                  ylim=None, xlim=None, xticks=True, yticks=True, experiment='femto', colors=['r'], export=False, MA=[False], labels=[''],
                  MA_npoints=[10], tightlayout=True, figsize=(8,5), title=None, before=True, time=5, movname='movie.mp4', ylabel=None, outside=False,
-                 steady_state=None, devide=None, IR=False, vlines=None, secax=True, merged=False):     
+                 steady_state=None, devide=None, IR=False, vlines=None, hlines=None, secax=True, merged=False):     
         # set relevant parameters
         self.figsize = figsize
         # get files
@@ -37,6 +37,7 @@ class Movie:
         # if you want to norm on GSB
         self.minnorm = minnorm
         self.vlines = vlines
+        self.hlines = hlines
         # to normalize at a specific wl
         self.normat = normat
         # specify x and y limits for plot
@@ -250,6 +251,10 @@ class Movie:
         if self.vlines!=None:
             for v in range(len(self.vlines)):
                 self.ax.axvline(x=self.vlines[v], linestyle='--', color='k')
+
+        if self.hlines!=None:
+            for h in range(len(self.hlines)):
+                self.ax.axhline(y=self.hlines[h], linestyle='--', color='k')
 
         if self.outside==True:
             self.ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), fontsize=8)

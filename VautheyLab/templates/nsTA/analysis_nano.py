@@ -58,7 +58,7 @@ def conversion(p, pixel, A_TA, wl_ref, A_ref):
     A_int = np.interp(wl_ref, wl, A_TA)
     return A_ref - A_int
 
-def get_individual_dA(TA_file):
+def get_individual_dA(TA_file, rms=False):
     fh = open(TA_file)
     # initialize array for data
     data = []
@@ -76,7 +76,10 @@ def get_individual_dA(TA_file):
                     # append time delay
                     a.append(float(line[0]))
                     # append TA signal
-                    a.append(float(line[2]))
+                    if rms==False:
+                        a.append(float(line[2]))
+                    else:
+                        a.append(float(line[3]))
                     # append samples in bin
                     b.append(float(line[-1]))
         # if line blank --> next delay
@@ -260,6 +263,17 @@ def load_TA_data(ex_wl, TA_file, Ho_TA_file, WL_file, Ho_ref_file):
 
     # save data
     np.save('dA.npy', np.array([t, wl, dA], dtype=object))
+
+    # get RMS and error matrix
+    t, RMS, nsamples = get_individual_dA(TA_file, rms=True)
+    t = t + offset
+    np.save('RMS.npy', np.array([t, wl, RMS], dtype=object))
+    Err = RMS / np.sqrt(nsamples)[:, None]  
+    np.save('Err.npy', np.array([t, wl, Err], dtype=object))
+    
+    #np.save('Err+.npy', np.array([t, wl, dA+Err], dtype=object))
+    #np.save('Err-.npy', np.array([t, wl, dA-Err], dtype=object))
+
     # convert to txt
     # Assuming you have numpy arrays x, y, and z
     t, l, dA = np.load('dA.npy', allow_pickle=True)
@@ -271,11 +285,11 @@ def load_TA_data(ex_wl, TA_file, Ho_TA_file, WL_file, Ho_ref_file):
     np.savetxt('TA.txt', dA, header='Transient Absorption / mOD')
 
 # define scale for 2D TA plots in mOD
-scale = [-70,70] 
+scale = [-20, 20] 
 # define excitation wavelength in nm
 ex_wl = 355
 # offset for kinetics
-offset = -1.3
+offset = -4.06
 
 # get data files
 files = [f for f in os.listdir() if f.endswith('.dat')]
@@ -292,4 +306,3 @@ load_TA_data(ex_wl,
              HO,
              WL,
              'HOLM_ref.csv')
-
