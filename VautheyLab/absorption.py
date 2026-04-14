@@ -228,30 +228,32 @@ class Absorption:
                     if self.norm == True: 
                         head = r'wavenlength / nm,    wavenumber / 10^3 cm-1,  norm. absorbance'
                     else:
-                        if self.conc == None:
-                            head = r'wavenlength / nm,    wavenumber / 10^3 cm-1,  absorbance'
-                            np.savetxt('%s.txt'%(self.files[i][:self.files[i].find('.')]), 
-                                        np.column_stack([self.wl[i], self.wn[i], self.A[i]]),
-                                        header=head, delimiter=',')
-                        else:
-                            head = r'wavenlength / nm,    wavenumber / 10^3 cm-1,  extinction coefficient / M-1 s-1'
-                            np.savetxt('%s.txt'%(self.files[i][:self.files[i].find('.')]), 
-                                        np.column_stack([self.wl[i], self.wn[i], self.A[i]/(self.conc[i] * self.plength[i])]),
-                                        header=head, delimiter=',')                            
+                        head = r'wavenlength / nm,    wavenumber / 10^3 cm-1,  absorbance'
+                    if self.conc == None:
+                        head = r'wavenlength / nm,    wavenumber / 10^3 cm-1,  absorbance'
+                        np.savetxt('%s.txt'%(self.files[i][:self.files[i].find('.')]), 
+                                    np.column_stack([self.wl[i], self.wn[i], self.A[i]]),
+                                    header=head, delimiter=',')
+                    else:
+                        head = r'wavenlength / nm,    wavenumber / 10^3 cm-1,  extinction coefficient / M-1 s-1'
+                        np.savetxt('%s.txt'%(self.files[i][:self.files[i].find('.')]), 
+                                    np.column_stack([self.wl[i], self.wn[i], self.A[i]/(self.conc[i] * self.plength[i])]),
+                                    header=head, delimiter=',')                            
                 else:
                     if self.norm == True: 
                         head = r'wavenlength / µm,    wavenumber / cm-1,  norm. absorbance'
                     else:
-                        if self.conc == None:
-                            head = r'wavenlength / µm,    wavenumber / cm-1,  absorbance'
-                            np.savetxt('%s.txt'%(self.files[i][:self.files[i].find('.')]), 
-                                        np.column_stack([self.wl[i], self.wn[i], self.A[i]]),
-                                        header=head, delimiter=',')
-                        else:
-                            head = r'wavenlength / µm,    wavenumber / cm-1,  extinction coefficient / M-1 s-1'
-                            np.savetxt('%s.txt'%(self.files[i][:self.files[i].find('.')]), 
-                                        np.column_stack([self.wl[i], self.wn[i], self.A[i]/(self.conc[i] * self.plength[i])]),
-                                        header=head, delimiter=',')   
+                        head = r'wavenlength / nm,    wavenumber / 10^3 cm-1,  absorbance'
+                    if self.conc == None:
+                        head = r'wavenlength / µm,    wavenumber / cm-1,  absorbance'
+                        np.savetxt('%s.txt'%(self.files[i][:self.files[i].find('.')]), 
+                                    np.column_stack([self.wl[i], self.wn[i], self.A[i]]),
+                                    header=head, delimiter=',')
+                    else:
+                        head = r'wavenlength / µm,    wavenumber / cm-1,  extinction coefficient / M-1 s-1'
+                        np.savetxt('%s.txt'%(self.files[i][:self.files[i].find('.')]), 
+                                    np.column_stack([self.wl[i], self.wn[i], self.A[i]/(self.conc[i] * self.plength[i])]),
+                                    header=head, delimiter=',')   
 
     # find maximum
     def find_max(self, file_index):

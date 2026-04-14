@@ -143,6 +143,7 @@ class Movie:
                     else:
                         if self.MA[i]==False:
                             dA = dA/dA[np.argmin(np.abs(t - self.normat[0])), np.argmin(np.abs(wl - self.normat[1]))]
+                            dA = -1*dA
                         else:
                             # normalize on mov av spectrum
                             wl_av = moving_average(wl, self.MA_npoints[i])
@@ -250,11 +251,11 @@ class Movie:
 
         if self.vlines!=None:
             for v in range(len(self.vlines)):
-                self.ax.axvline(x=self.vlines[v], linestyle='--', color='k')
+                self.ax.axvline(x=self.vlines[v], linestyle='--', color='k', alpha=0.3)
 
         if self.hlines!=None:
             for h in range(len(self.hlines)):
-                self.ax.axhline(y=self.hlines[h], linestyle='--', color='k')
+                self.ax.axhline(y=self.hlines[h], linestyle='--', color='k', alpha=0.3)
 
         if self.outside==True:
             self.ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), fontsize=8)
