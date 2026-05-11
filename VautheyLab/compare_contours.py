@@ -168,6 +168,10 @@ class Compare_Contours:
                     self.ax[i].contour(self.wn[i], self.t[i], self.dA[i], levels=levels, colors='k', linestyles='-', linewidths=0.5, alpha=0.1)
         if self.colorbar==True:
             self.cbar = self.fig.colorbar(D, ax=self.ax[len(self.files)-1])
+        
+        # rasterize contours so .svg doesn't get gigantic
+        for c in D.collections:
+            c.set_rasterized(True)
 
     def show(self):
         if self.figsize!=None:
@@ -221,5 +225,6 @@ class Compare_Contours:
         if self.tightlayout == True:
             self.fig.tight_layout()
         if self.savefig == True: 
+            self.fig.savefig('contour_comp.svg', transparent=True)
             self.fig.savefig('contour_comp.pdf', transparent=True)
         plt.show()

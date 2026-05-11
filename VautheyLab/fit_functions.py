@@ -212,4 +212,7 @@ def tri_exp(t, A1, tau1, A2, tau2, A3, tau3):
 def tri_exp_with_bg(t, A1, tau1, A2, tau2, A3, tau3, bg):
     return A1*np.exp(-t/tau1) + A2*np.exp(-t/tau2) + A3*np.exp(-t/tau3) + bg
 
-
+# sec2 pulse
+def sech2_pulse(t, A, center, FWHM):
+    tau = FWHM / (2 * np.arccosh(np.sqrt(2)))
+    return A * (1 / np.cosh((t - center) / tau))**2

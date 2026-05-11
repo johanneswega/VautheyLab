@@ -147,6 +147,9 @@ class Contour:
             if self.lines==True:
                 self.ax.contour(self.wn, self.t, self.dA, levels=levels, colors='k', linestyles='-', linewidths=0.5, alpha=0.2)
         self.cbar = plt.colorbar(D, ax=self.ax)
+        # rasterize contours so .svg doesn't get gigantic
+        for c in D.collections:
+            c.set_rasterized(True)
 
     def show(self):
         if self.figsize!=None:
@@ -202,5 +205,6 @@ class Contour:
         if self.tightlayout == True:
             self.fig.tight_layout()
         if self.savefig == True: 
+            self.fig.savefig('%s_contour.svg'%(self.file[:self.file.find('.')]), transparent=True)
             self.fig.savefig('%s_contour.pdf'%(self.file[:self.file.find('.')]), transparent=True)
         plt.show()
