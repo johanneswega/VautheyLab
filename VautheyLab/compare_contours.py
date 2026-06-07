@@ -15,7 +15,7 @@ class Compare_Contours:
     def __init__(self, files, units='wn', inv=True, t_cuts=None, wl_cuts=None, norm=False, normat=None, minnorm=False, scatter=None, ylim=None, xlim=None, xticks=False,
                  yticks=True, experiment='femto', export=False, MA=[False], MA_npoints=10, tightlayout=True, cmap='RdBu_r', lines=False, yscale='linear', arcsinh=False,
                  savefig=False, figsize=None, titles=None, scale=[-10, 10], nlevels=51, white=False, nwhite=2, zeroline=False, colorbar=False, IR=False,
-                 devide=None):          
+                 devide=None, extend='neither'):          
         # set relevant parameters
         self.figsize = figsize
         # get files
@@ -73,6 +73,8 @@ class Compare_Contours:
             for i in range(len(self.files)):
                 self.MA.append(self.MA[0])
         self.MA_npoints = MA_npoints
+        # to extend colors bar
+        self.extend = extend
         # tight layout
         self.tightlayout = tightlayout
         # intiialize figure
@@ -159,11 +161,11 @@ class Compare_Contours:
         # go through all files
         for i in range(len(self.files)):
             if self.units=='wl':
-                D = self.ax[i].contourf(self.wl[i], self.t[i], self.dA[i], levels=levels, colors=colors)
+                D = self.ax[i].contourf(self.wl[i], self.t[i], self.dA[i], levels=levels, colors=colors, extend=self.extend)
                 if self.lines==True:
                     self.ax[i].contour(self.wl[i], self.t[i], self.dA[i], levels=levels, colors='k', linestyles='-', linewidths=0.5, alpha=0.1)
             else:
-                D = self.ax[i].contourf(self.wn[i], self.t[i], self.dA[i], levels=levels, colors=colors)
+                D = self.ax[i].contourf(self.wn[i], self.t[i], self.dA[i], levels=levels, colors=colors, extend=self.extend)
                 if self.lines==True:
                     self.ax[i].contour(self.wn[i], self.t[i], self.dA[i], levels=levels, colors='k', linestyles='-', linewidths=0.5, alpha=0.1)
         if self.colorbar==True:

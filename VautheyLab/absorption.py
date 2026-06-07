@@ -339,7 +339,6 @@ class Absorption:
         print(f"relative error = {err_eps*100/eps : .2f} percent")
         print("")
  
-
     # function to calculate concentration of solution
     # need to procvide eps = [ (eps_at_wl, wl) ] at intialization
     def get_concentration(self, file_index):

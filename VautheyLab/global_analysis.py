@@ -15,12 +15,12 @@ def load_pdat(file):
 # class to perform global kinetic analysis
 class Global_Analysis:
     # initialize class
-    def __init__(self, file, p0, t_cuts=None, wl_cuts=None, scatter=None, experiment='femto', scale=[-10, 10],
+    def __init__(self, file, p0, t_cuts=None, wl_cuts=None, scatter=None, experiment='femto', scale=[-10, 10], fix=False,
                  model='sequential', IRF=False, wavelengths=np.arange(350, 750, 20), IR=False, nlevels=51, K=None, C0=None, RMS=False):
         # file to be loaded 
         self.file = file
         # initial values for the fit 
-        self.p0 = p0
+        self.p0 = np.array(p0)
         # experiment type
         self.experiment = experiment
         # scale for plots
@@ -47,6 +47,9 @@ class Global_Analysis:
         self.C0 = C0
         # whether to use experimental RMS on TA data for fit
         self.RMS = RMS
+        # list of k's to fix = should follow [True, False, False]
+        # if you want to fix k0 for example 
+        self.fix = fix
 
         # read in data
         self.read_data()
@@ -205,6 +208,7 @@ class Global_Analysis:
 
     # method to calculate concentration matrix based on fit
     def calculate_C(self, p):
+
         # get parameters
         if self.IRF==False:
             k = 1/p
@@ -213,6 +217,12 @@ class Global_Analysis:
             t0 = p[-2]
             fwhm = p[-1]
             sigma = fwhm/(2*(2*np.log(2))**0.5)
+
+        # fix parameters if desired
+        if self.fix:
+            for i in range(len(self.fix)):
+                if self.fix[i]:
+                    k[i] = 1/self.p0[i]
 
         # get K-matrix for parallel model (DADS)
         if self.model=='parallel':
@@ -233,7 +243,6 @@ class Global_Analysis:
         if self.model=='target':
             # build the target matrix from the string matrix 
             K = self._build_target_K(k)
-            print(K)
             C0 = self.C0
 
         # Calculate eigenvalues and eigenvectors
@@ -326,7 +335,7 @@ class Global_Analysis:
         print("")
         dic = {0:'A', 1:'B', 2:'C', 3:'D', 4:'E', 5:'F', 6:'G', 7:'H', 8:'I'}
         # Calculate the covariance matrix
-        covariance_matrix = np.linalg.inv(np.dot(res.jac.T, res.jac))
+        covariance_matrix = np.linalg.pinv(np.dot(res.jac.T, res.jac))
         # Calculate the parameter errors
         p_err = np.sqrt(np.diagonal(covariance_matrix))
 
@@ -402,7 +411,14 @@ class Global_Analysis:
             else:
                 ax[1].plot(t, Sim[:, index], '-', color=col[i], linewidth=2, label=r'%i cm$^{-1}$'%(round(l[index])))
             # plot residuals
-            ax[0].plot(t, Sim[:, index]-dA[:, index], '-', color=col[i])
+            if not self.RMS: 
+                ax[0].plot(t, Sim[:, index]-dA[:, index], '-', color=col[i])
+            else:
+                # computed weighted residuals
+                res = (Sim[:, index]-dA[:, index])/self.rms[:, index]
+                # calculate reduced chi2
+                # chi2_red = np.sum(res**2) / (len(res) - len(self.p0))
+                ax[0].plot(t, res, '-', color=col[i])
         # set x-lables
         if self.experiment=='nano':
             ax[1].set_xlabel(r'$\Delta t / \text{ns}$')
@@ -418,7 +434,10 @@ class Global_Analysis:
         # stylistic stuff
         ax[0].axhline(y=0, color='k')
         ax[0].set_ylim([-2, 2])
-        ax[0].set_ylabel(r'residuals')
+        if not self.RMS:
+            ax[0].set_ylabel(r'res.')
+        else:
+            ax[0].set_ylabel(r'res. / $\sigma$')
         ax[1].set_ylabel(r'$\Delta{A} / 10^{-3}$')
         ax[1].axhline(y=0, color='k')
         ax[1].legend(loc='center left', bbox_to_anchor=(1, 0.5), fontsize=9)

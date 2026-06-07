@@ -14,7 +14,8 @@ def load_pdat(file):
 class Contour:
     def __init__(self, file, units='wn', inv=True, t_cuts=None, wl_cuts=None, norm=False, normat=None, minnorm=False, scatter=None, ylim=None, xlim=None, xticks=True,
                  yticks=True, experiment='femto', export=False, MA=False, MA_npoints=10, tightlayout=True, cmap='RdBu_r', lines=False, yscale='linear', IR=False, kk=False,
-                 savefig=False, figsize=None, title=None, scale=[-10, 10], nlevels=51, white=False, nwhite=2, zeroline=False, secax=True, arcsinh=False, showcbar=True):          
+                 savefig=False, figsize=None, title=None, scale=[-10, 10], nlevels=51, white=False, nwhite=2, zeroline=False, secax=True, arcsinh=False, showcbar=True,
+                 extend='neither'):          
         # set relevant parameters
         self.figsize = figsize
         # get files
@@ -72,6 +73,8 @@ class Contour:
         self.kk = kk
         # save figure
         self.savefig = savefig
+        # to extend colorbar
+        self.extend = extend
         # intiialize figure
         self.fig, self.ax = plt.subplots(1,1)
         # read data
@@ -139,11 +142,11 @@ class Contour:
             colors[int(self.nlevels/2)-1] = 0
             colors[int(self.nlevels/2)-2] = 0
         if self.units=='wl':
-            D = self.ax.contourf(self.wl, self.t, self.dA, levels=levels, colors=colors)
+            D = self.ax.contourf(self.wl, self.t, self.dA, levels=levels, colors=colors, extend=self.extend)
             if self.lines==True:
                 self.ax.contour(self.wl, self.t, self.dA, levels=levels, colors='k', linestyles='-', linewidths=0.5, alpha=0.2)
         else:
-            D = self.ax.contourf(self.wn, self.t, self.dA, levels=levels, colors=colors)
+            D = self.ax.contourf(self.wn, self.t, self.dA, levels=levels, colors=colors, extend=self.extend)
             if self.lines==True:
                 self.ax.contour(self.wn, self.t, self.dA, levels=levels, colors='k', linestyles='-', linewidths=0.5, alpha=0.2)
         self.cbar = plt.colorbar(D, ax=self.ax)
